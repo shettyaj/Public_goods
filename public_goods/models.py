@@ -11,8 +11,8 @@ This is a 6 round public goods game with 5 players.
 
 class Constants(BaseConstants):
     name_in_url = 'public_goods'
-    players_per_group = 5
-    num_rounds = 6
+    players_per_group = 2
+    num_rounds = 2
 
     instructions_template = 'public_goods/Instructions.html'
 

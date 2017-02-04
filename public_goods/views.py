@@ -27,7 +27,7 @@ class ResultsWaitPage(WaitPage):
 
 class Results(Page):
     """Players payoff: How much each has earned"""
-
+    print('Hello')
     def vars_for_template(self):
         return {
             'total_earnings': self.group.total_contribution * Constants.efficiency_factor,
