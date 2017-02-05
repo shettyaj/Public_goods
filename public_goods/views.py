@@ -27,8 +27,14 @@ class ResultsWaitPage(WaitPage):
 
 class Results(Page):
     """Players payoff: How much each has earned"""
-    print('Hello')
+    form_model = models.Group
+    form_fields = ['numbers']
+        #print(self.group.lo west_contributor, self.group.max_contribution)
+    def numbers_choices(self):
+        return self.group.group_fields()
+
     def vars_for_template(self):
+
         return {
             'total_earnings': self.group.total_contribution * Constants.efficiency_factor,
         }

@@ -1,4 +1,5 @@
 {% extends "global/Base.html" %}
+{% load i18n %}
 {% load staticfiles otree_tags %}
 
 {% block title %}
@@ -12,10 +13,7 @@
         <tr><td>You contributed:</td><td>{{ player.contribution }}</td></tr>
         <tr><td>Other participants contributed:</td><td></td></tr>
         {% for p in player.get_others_in_group %}
-            <tr>
-            <td>{{ p.get_others_in_group }}</td>
-            <td>{{ p.contribution }}</td>
-            </tr>
+            <tr><td></td><td>{{ p.contribution }}</td></tr>
         {% endfor %}
 
         <tr><td>Total contribution:</td><td>{{ group.total_contribution }}</td></tr>
@@ -24,7 +22,12 @@
 
         <tr><td>Total earnings from the project:</td><td>{{ total_earnings }}</td></tr>
         <tr><td>Your earnings from the project:</td><td>{{ group.individual_share }}</td></tr>
-
+        <tr><td> Max contribution is :</td><td> {{ group.max_contribution }}</td></tr>
+        {% ifequal player.contribution group.max_contribution %}
+            <tr><td> You have the highest contribution! {{ group.max_contribution }}</td></tr>
+            <tr><td> Click to Punish the lowest contributor </td></tr>
+            <tr><td>{% formfield group.numbers with label="Players" %}
+        {% endifequal %}
         <tr><td colspan="2"><hr/></td></tr>
 
         <tr><td>Thus in total you earned:</td><td>{{ player.payoff }}</td></tr>
